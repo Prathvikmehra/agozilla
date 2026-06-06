@@ -1,0 +1,17 @@
+{
+  "name": "agozilla",
+  "version": "1.0.0",
+  "description": "Turn dates into human readable time expressions.",
+  "main": "index.js",
+  "keywords": [
+    "date",
+    "time",
+    "ago",
+    "formatter",
+    "human-readable",
+    "javascript",
+    "npm"
+  ],
+  "author": "Prathvik Mehra",
+  "license": "MIT"
+}
