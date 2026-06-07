@@ -17,42 +17,50 @@ console.log(agozilla("2024-01-01"));
 // 2 years 5 months ago
 ```
 
-### Short Format
+## Future Dates
+
+```js
+agozilla("2030-01-01");
+
+// in 3 years 6 months
+```
+
+## Short Format
 
 ```js
 agozilla("2024-01-01", {
-  short: true,
+  short: true
 });
+
+// 2y 5mo ago
 ```
 
-Output:
-
-```txt
-2y 5mo ago
-```
-
-### Limit Units
+## Limit Units
 
 ```js
 agozilla("2024-01-01", {
-  maxUnits: 1,
+  maxUnits: 1
 });
+
+// 2 years ago
 ```
 
-Output:
+## TypeScript
 
-```txt
-2 years ago
+```ts
+import agozilla = require("agozilla");
+
+const result = agozilla("2024-01-01");
 ```
 
 ## Features
 
 * Past dates
 * Future dates
-* Short format
-* Multi-unit output
+* Short format support
+* Multi-unit formatting
 * Invalid date handling
-* Lightweight
+* TypeScript support
 * Zero dependencies
 
 ## License
