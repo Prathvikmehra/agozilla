@@ -1,11 +1,9 @@
 {
   "name": "agozilla",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Turn boring dates into human-readable time.",
   "main": "index.js",
-
   "types": "index.d.ts",
-
   "keywords": [
     "date",
     "time",
@@ -15,17 +13,13 @@
     "javascript",
     "npm"
   ],
-
   "author": "Prathvik Mehra",
   "license": "MIT",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Prathvikmehra/agozilla.git"
   },
-
   "homepage": "https://github.com/Prathvikmehra/agozilla#readme",
-
   "bugs": {
     "url": "https://github.com/Prathvikmehra/agozilla/issues"
   }
