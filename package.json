@@ -1,1 +1,25 @@
-{"name":"agozilla","version":"1.0.1","description":"Turn boring dates into human-readable time.","main":"index.js","keywords":["date","time","ago","formatter","human-readable","javascript","npm"],"author":"Prathvik Mehra","license":"MIT","repository":{"type":"git","url":"git+https://github.com/Prathvikmehra/agozilla.git"},"homepage":"https://github.com/Prathvikmehra/agozilla","bugs":{"url":"https://github.com/Prathvikmehra/agozilla/issues"}}
+{
+  "name": "agozilla",
+  "version": "1.0.1",
+  "description": "Turn boring dates into human-readable time.",
+  "main": "index.js",
+  "keywords": [
+    "date",
+    "time",
+    "ago",
+    "formatter",
+    "human-readable",
+    "javascript",
+    "npm"
+  ],
+  "author": "Prathvik Mehra",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prathvikmehra/agozilla.git"
+  },
+  "homepage": "https://github.com/Prathvikmehra/agozilla",
+  "bugs": {
+    "url": "https://github.com/Prathvikmehra/agozilla/issues"
+  }
+}
