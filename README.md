@@ -55,13 +55,13 @@ const result = agozilla("2024-01-01");
 
 ## Features
 
-* Past dates
-* Future dates
-* Short format support
-* Multi-unit formatting
-* Invalid date handling
-* TypeScript support
-* Zero dependencies
+- Past dates
+- Future dates
+- Short format support
+- Multi-unit formatting
+- Seconds support
+- TypeScript support
+- Zero dependencies
 
 ## License
 

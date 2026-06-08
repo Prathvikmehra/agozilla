@@ -5,6 +5,7 @@ function formatUnit(value, unit, short = false) {
         day: "d",
         hour: "h",
         minute: "m",
+        second: "s",
     };
 
     if (short) {
@@ -45,6 +46,7 @@ function howLongAgo(dateString, options = {}) {
     diffSeconds %= 60 * 60;
 
     const minutes = Math.floor(diffSeconds / 60);
+    const seconds = diffSeconds % 60;
 
     const parts = [];
 
@@ -53,6 +55,11 @@ function howLongAgo(dateString, options = {}) {
     if (days) parts.push(formatUnit(days, "day", options.short));
     if (hours) parts.push(formatUnit(hours, "hour", options.short));
     if (minutes) parts.push(formatUnit(minutes, "minute", options.short));
+    if (seconds) parts.push(formatUnit(seconds, "second", options.short));
+
+    if (parts.length === 0) {
+        return "just now";
+    }
 
     const maxUnits = options.maxUnits || 2;
 
