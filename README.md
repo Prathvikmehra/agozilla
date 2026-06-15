@@ -63,6 +63,20 @@ const result = agozilla("2024-01-01");
 - TypeScript support
 - Zero dependencies
 
+## Locale Support
+
+```js
+agozilla("2024-01-01", {
+  locale: "es"
+});
+// hace 2 años 5 meses
+
+agozilla("2024-01-01", {
+  locale: "fr"
+});
+// il y a 2 ans 5 mois
+```
+
 ## License
 
 MIT

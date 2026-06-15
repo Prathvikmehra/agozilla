@@ -1,4 +1,39 @@
-function formatUnit(value, unit, short = false) {
+const locales = {
+    en: {
+        year: "year",
+        month: "month",
+        day: "day",
+        hour: "hour",
+        minute: "minute",
+        second: "second",
+        ago: "ago",
+        in: "in"
+    },
+
+    es: {
+        year: ["año", "años"],
+        month: ["mes", "meses"],
+        day: ["día", "días"],
+        hour: ["hora", "horas"],
+        minute: ["minuto", "minutos"],
+        second: ["segundo", "segundos"],
+        ago: "hace",
+        in: "en"
+    },
+
+    fr: {
+        year: "an",
+        month: "mois",
+        day: "jour",
+        hour: "heure",
+        minute: "minute",
+        second: "seconde",
+        ago: "il y a",
+        in: "dans"
+    }
+};
+
+function formatUnit(value, unit, localeData, short = false) {
     const shortMap = {
         year: "y",
         month: "mo",
@@ -12,10 +47,25 @@ function formatUnit(value, unit, short = false) {
         return `${value}${shortMap[unit]}`;
     }
 
-    return `${value} ${unit}${value === 1 ? "" : "s"}`;
+   let label = localeData[unit];
+
+if (Array.isArray(label)) {
+    label = value === 1 ? label[0] : label[1];
+    return `${value} ${label}`;
+}
+
+    // French special case
+    if (localeData === locales.fr && unit === "month") {
+        return `${value} ${label}`;
+    }
+
+    return `${value} ${label}${value === 1 ? "" : "s"}`;
 }
 
 function howLongAgo(dateString, options = {}) {
+    const locale = options.locale || "en";
+    const localeData = locales[locale] || locales.en;
+
     const inputDate = new Date(dateString);
 
     if (isNaN(inputDate.getTime())) {
@@ -50,22 +100,35 @@ function howLongAgo(dateString, options = {}) {
 
     const parts = [];
 
-    if (years) parts.push(formatUnit(years, "year", options.short));
-    if (months) parts.push(formatUnit(months, "month", options.short));
-    if (days) parts.push(formatUnit(days, "day", options.short));
-    if (hours) parts.push(formatUnit(hours, "hour", options.short));
-    if (minutes) parts.push(formatUnit(minutes, "minute", options.short));
-    if (seconds) parts.push(formatUnit(seconds, "second", options.short));
+    if (years) parts.push(formatUnit(years, "year", localeData, options.short));
+    if (months) parts.push(formatUnit(months, "month", localeData, options.short));
+    if (days) parts.push(formatUnit(days, "day", localeData, options.short));
+    if (hours) parts.push(formatUnit(hours, "hour", localeData, options.short));
+    if (minutes) parts.push(formatUnit(minutes, "minute", localeData, options.short));
+    if (seconds) parts.push(formatUnit(seconds, "second", localeData, options.short));
 
     if (parts.length === 0) {
         return "just now";
     }
 
     const maxUnits = options.maxUnits || 2;
-
     const result = parts.slice(0, maxUnits).join(" ");
 
-    return isFuture ? `in ${result}` : `${result} ago`;
+    if (locale === "es") {
+        return isFuture
+            ? `${localeData.in} ${result}`
+            : `${localeData.ago} ${result}`;
+    }
+
+    if (locale === "fr") {
+        return isFuture
+            ? `${localeData.in} ${result}`
+            : `${localeData.ago} ${result}`;
+    }
+
+    return isFuture
+        ? `in ${result}`
+        : `${result} ago`;
 }
 
 module.exports = howLongAgo;

@@ -3,6 +3,7 @@ declare function agozilla(
   options?: {
     short?: boolean;
     maxUnits?: number;
+    locale?: "en" | "es" | "fr";
   }
 ): string;
 
