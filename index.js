@@ -1,6 +1,6 @@
 const locales = require("./lib/locale");
 const formatUnit = require("./lib/formatter");
-
+const { getTimeParts } = require("./lib/utils");
 
 function howLongAgo(dateString, options = {}) {
     const locale = options.locale || "en";
@@ -20,23 +20,18 @@ function howLongAgo(dateString, options = {}) {
         return "just now";
     }
 
+    // Check whether the date is in the future
     const isFuture = diffSeconds < 0;
-    diffSeconds = Math.abs(diffSeconds);
 
-    const years = Math.floor(diffSeconds / (365 * 24 * 60 * 60));
-    diffSeconds %= 365 * 24 * 60 * 60;
-
-    const months = Math.floor(diffSeconds / (30 * 24 * 60 * 60));
-    diffSeconds %= 30 * 24 * 60 * 60;
-
-    const days = Math.floor(diffSeconds / (24 * 60 * 60));
-    diffSeconds %= 24 * 60 * 60;
-
-    const hours = Math.floor(diffSeconds / (60 * 60));
-    diffSeconds %= 60 * 60;
-
-    const minutes = Math.floor(diffSeconds / 60);
-    const seconds = diffSeconds % 60;
+    // Break the time difference into units
+    const {
+        years,
+        months,
+        days,
+        hours,
+        minutes,
+        seconds
+    } = getTimeParts(diffSeconds);
 
     const parts = [];
 
