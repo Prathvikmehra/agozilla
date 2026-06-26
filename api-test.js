@@ -45,3 +45,24 @@ console.log(
 console.log(
     agozilla.until("2000-01-01")
 );
+
+console.log();
+console.log("=== Smart ===");
+
+console.log(agozilla.smart(new Date()));
+
+console.log(
+    agozilla.smart(
+        new Date(Date.now() - 86400000)
+    )
+);
+
+console.log(
+    agozilla.smart(
+        new Date(Date.now() + 86400000)
+    )
+);
+
+console.log(
+    agozilla.smart("2020-01-01")
+);
