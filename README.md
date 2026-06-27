@@ -1,3 +1,9 @@
+![npm version]
+![downloads]
+![license]
+![build]
+![typescript]
+
 # Agozilla 🦖
 
 Turn boring dates into human-readable time.
