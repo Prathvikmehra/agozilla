@@ -1,88 +1,173 @@
-![npm version]
-![downloads]
-![license]
-![build]
-![typescript]
+# 🦖 Agozilla
 
-# Agozilla 🦖
+> **Turn boring dates into human-friendly time.**
 
-Turn boring dates into human-readable time.
+[![npm version](https://img.shields.io/npm/v/agozilla.svg)](https://www.npmjs.com/package/agozilla)
+[![npm downloads](https://img.shields.io/npm/dw/agozilla.svg)](https://www.npmjs.com/package/agozilla)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/Prathvikmehra/agozilla/actions/workflows/test.yml/badge.svg)](https://github.com/Prathvikmehra/agozilla/actions)
 
-## Installation
+A lightweight JavaScript library for formatting dates into natural, human-readable expressions.
+
+No dependencies. Fast. TypeScript ready.
+
+---
+
+## 📦 Installation
 
 ```bash
 npm install agozilla
 ```
 
-## Usage
+---
 
-```js
+## 🚀 Quick Start
+
+```javascript
 const agozilla = require("agozilla");
 
 console.log(agozilla("2024-01-01"));
-// 2 years 5 months ago
-```
-
-## Future Dates
-
-```js
-agozilla("2030-01-01");
-
-// in 3 years 6 months
-```
-
-## Short Format
-
-```js
-agozilla("2024-01-01", {
-  short: true
-});
-
-// 2y 5mo ago
-```
-
-## Limit Units
-
-```js
-agozilla("2024-01-01", {
-  maxUnits: 1
-});
-
 // 2 years ago
+
+console.log(agozilla.fromNow("2024-01-01"));
+// 2 years ago
+
+console.log(
+  agozilla.duration(
+    "2020-01-01",
+    "2025-01-01"
+  )
+);
+// 5 years
+
+console.log(
+  agozilla.until("2030-01-01")
+);
+// in 3 years
+
+console.log(
+  agozilla.smart(new Date())
+);
+// Today
 ```
 
-## TypeScript
+---
 
-```ts
-import agozilla = require("agozilla");
+## ✨ Features
 
-const result = agozilla("2024-01-01");
+- ⚡ Zero dependencies
+- 🌍 Locale support
+- 📦 TypeScript definitions
+- ⏱ Relative time formatting
+- 📅 Human-friendly dates
+- 🧪 Jest tested
+- ✅ GitHub Actions CI
+
+---
+
+## 📚 API
+
+### fromNow()
+
+```javascript
+agozilla.fromNow(date);
 ```
 
-## Features
+Returns:
 
-- Past dates
-- Future dates
-- Short format support
-- Multi-unit formatting
-- Seconds support
-- TypeScript support
-- Zero dependencies
+```
+2 years ago
+```
 
-## Locale Support
+---
 
-```js
-agozilla("2024-01-01", {
-  locale: "es"
+### duration()
+
+```javascript
+agozilla.duration(start, end);
+```
+
+Returns:
+
+```
+5 years 3 months
+```
+
+---
+
+### until()
+
+```javascript
+agozilla.until(date);
+```
+
+Returns:
+
+```
+in 2 months
+```
+
+---
+
+### smart()
+
+```javascript
+agozilla.smart(date);
+```
+
+Returns:
+
+```
+Today
+
+Yesterday
+
+Tomorrow
+
+5 years ago
+```
+
+---
+
+## 🌍 Locales
+
+```javascript
+agozilla.fromNow(date, {
+    locale: "en"
 });
-// hace 2 años 5 meses
 
-agozilla("2024-01-01", {
-  locale: "fr"
+agozilla.fromNow(date, {
+    locale: "es"
 });
-// il y a 2 ans 5 mois
+
+agozilla.fromNow(date, {
+    locale: "fr"
+});
 ```
 
-## License
+---
 
-MIT
+## 🗺 Roadmap
+
+- ✅ fromNow()
+- ✅ duration()
+- ✅ until()
+- ✅ smart()
+- ⏳ calendar()
+- ⏳ live()
+- ⏳ browser bundle
+- ⏳ React package
+
+---
+
+## 🤝 Contributing
+
+Contributions, feature requests and bug reports are welcome.
+
+If you'd like to contribute, feel free to open an issue or submit a pull request.
+
+---
+
+## 📄 License
+
+MIT © Prathvik Mehra
