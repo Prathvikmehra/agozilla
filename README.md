@@ -1,7 +1,9 @@
 # 🦖 Agozilla
 
-> **Turn boring dates into human-friendly time.**
+> **Human-friendly date & time formatting for JavaScript.**
 
+![Node](https://img.shields.io/badge/Node-%3E%3D18-brightgreen)
+![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)
 [![npm version](https://img.shields.io/npm/v/agozilla.svg)](https://www.npmjs.com/package/agozilla)
 [![npm downloads](https://img.shields.io/npm/dw/agozilla.svg)](https://www.npmjs.com/package/agozilla)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)

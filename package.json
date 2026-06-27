@@ -1,7 +1,7 @@
 {
   "name": "agozilla",
   "version": "1.2.0",
-  "description": "Turn boring dates into human-readable time.",
+  "description": "Human-friendly date and time formatting for JavaScript. Zero dependencies, locale support and TypeScript ready.",
   "main": "index.js",
 
   "scripts": {
@@ -10,15 +10,22 @@
 
   "types": "index.d.ts",
 
-  "keywords": [
-    "date",
-    "time",
-    "ago",
-    "formatter",
-    "human-readable",
-    "javascript",
-    "npm"
-  ],
+ "keywords": [
+  "date",
+  "time",
+  "relative-time",
+  "time-ago",
+  "formatter",
+  "duration",
+  "countdown",
+  "javascript",
+  "typescript",
+  "node",
+  "npm",
+  "utility",
+  "human-readable",
+  "locale"
+],
 
   "author": "Prathvik Mehra",
   "license": "MIT",
