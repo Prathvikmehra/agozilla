@@ -1,46 +1,38 @@
 {
   "name": "agozilla",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Human-friendly date and time formatting for JavaScript. Zero dependencies, locale support and TypeScript ready.",
   "main": "index.js",
-
   "scripts": {
     "test": "jest"
   },
-
   "types": "index.d.ts",
-
- "keywords": [
-  "date",
-  "time",
-  "relative-time",
-  "time-ago",
-  "formatter",
-  "duration",
-  "countdown",
-  "javascript",
-  "typescript",
-  "node",
-  "npm",
-  "utility",
-  "human-readable",
-  "locale"
-],
-
+  "keywords": [
+    "date",
+    "time",
+    "relative-time",
+    "time-ago",
+    "formatter",
+    "duration",
+    "countdown",
+    "javascript",
+    "typescript",
+    "node",
+    "npm",
+    "utility",
+    "human-readable",
+    "locale"
+  ],
   "author": "Prathvik Mehra",
   "license": "MIT",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Prathvikmehra/agozilla.git"
   },
-
   "homepage": "https://github.com/Prathvikmehra/agozilla#readme",
-
   "bugs": {
     "url": "https://github.com/Prathvikmehra/agozilla/issues"
   },
-
   "devDependencies": {
     "jest": "^30.4.2"
   }
