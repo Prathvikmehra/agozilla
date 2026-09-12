@@ -1,6 +1,6 @@
 {
   "name": "agozilla",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Human-friendly date and time formatting for JavaScript. Zero dependencies, locale support and TypeScript ready.",
   "main": "index.js",
   "scripts": {
