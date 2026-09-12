@@ -3,6 +3,12 @@
   "version": "1.4.0",
   "description": "Human-friendly date and time formatting for JavaScript. Zero dependencies, locale support and TypeScript ready.",
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
   "scripts": {
     "test": "jest"
   },
@@ -36,6 +42,7 @@
   "files": [
     "index.js",
     "index.d.ts",
+     "index.mjs",
     "lib",
     "README.md",
     "LICENSE"
