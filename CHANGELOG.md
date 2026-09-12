@@ -1,19 +1,8 @@
-# Changelog
-
-## [1.3.0] - 2026-06-09
+## [1.4.0] - 2026-09-12
 
 ### Added
 
-- ✨ Modular architecture
-- ✨ `agozilla.fromNow()`
-- ✨ `agozilla.duration()`
-- ✨ `agozilla.until()`
-- ✨ `agozilla.smart()`
-- ✨ Jest test suite
-- ✨ GitHub Actions CI
-
-### Changed
-
-- Refactored project into reusable modules
-- Improved code organization
-- Better TypeScript support
+- Added `calendar()` API for human-friendly calendar date formatting.
+- Added support for Today, Yesterday, Tomorrow, Last weekday, and Next weekday.
+- Added calendar date formatting for older dates.
+- Added tests for `calendar()`.

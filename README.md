@@ -128,6 +128,37 @@ Tomorrow
 
 5 years ago
 ```
+### calendar()
+
+Get human-friendly calendar descriptions for dates.
+
+```javascript
+agozilla.calendar(new Date());
+// Today
+
+agozilla.calendar(yesterday);
+// Yesterday
+
+agozilla.calendar(tomorrow);
+// Tomorrow
+```
+
+For nearby dates:
+
+```javascript
+agozilla.calendar(date);
+// Last Monday
+
+agozilla.calendar(date);
+// Next Friday
+```
+
+For older dates, Agozilla returns a formatted calendar date:
+
+```javascript
+agozilla.calendar("2024-01-01");
+// January 1, 2024
+```
 
 ---
 

@@ -33,6 +33,13 @@
   "bugs": {
     "url": "https://github.com/Prathvikmehra/agozilla/issues"
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
   "devDependencies": {
     "jest": "^30.4.2"
   }
