@@ -1,3 +1,4 @@
+
 # 🦖 Agozilla
 
 > Human-friendly date and time formatting for JavaScript.
@@ -7,7 +8,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/Prathvikmehra/agozilla/actions/workflows/test.yml/badge.svg)](https://github.com/Prathvikmehra/agozilla/actions)
 
-Agozilla is a lightweight, zero-dependency JavaScript library for turning dates and time differences into human-readable text. It supports CommonJS, ES modules, TypeScript declarations, and modern bundlers.
+Agozilla is a lightweight, zero-runtime-dependency JavaScript library for converting dates and time differences into human-readable text.
+
+It supports CommonJS, ES modules, TypeScript declarations, modern bundlers, and English, Spanish, and French localization.
 
 ## Installation
 
@@ -15,7 +18,7 @@ Agozilla is a lightweight, zero-dependency JavaScript library for turning dates 
 npm install agozilla
 ```
 
-## Quick start
+## Quick Start
 
 ### CommonJS
 
@@ -30,8 +33,8 @@ console.log(agozilla(oneHourAgo));
 console.log(agozilla.fromNow(oneHourAgo));
 // 1 hour ago
 
-console.log(agozilla.duration("2020-01-01", "2025-01-01"));
-// 5 years 2 days
+console.log(agozilla.duration("2025-01-31", "2025-02-28"));
+// 1 month
 
 console.log(agozilla.smart(new Date()));
 // Today
@@ -40,7 +43,7 @@ console.log(agozilla.calendar(new Date()));
 // Today
 ```
 
-### ES modules
+### ES Modules
 
 ```js
 import agozilla from "agozilla";
@@ -54,101 +57,149 @@ console.log(agozilla(oneHourAgo));
 ## Features
 
 - Zero runtime dependencies
-- Relative-time formatting
-- Duration between two dates
+- Relative-time formatting for past and future dates
+- Calendar-aware duration calculations
 - Time-until formatting
-- Smart date descriptions (Today, Yesterday, Tomorrow, or relative time)
-- Calendar descriptions (including nearby weekdays)
-- English, Spanish, and French locale options
-- Short-format and maximum-unit options
+- Smart date descriptions
+- Calendar descriptions with nearby weekdays
+- English, Spanish, and French localization
+- Short-format output
+- Configurable maximum time units
+- Custom reference dates for predictable results
 - TypeScript declarations
-- CommonJS and ESM entry points
+- CommonJS and ES module support
 - Compatible with modern bundlers
 
-## API
+## API Reference
 
-### `agozilla(date, options?)` / `agozilla.fromNow(date, options?)`
+### `agozilla(date, options?)`
 
-Formats a date relative to the current time. Past dates return text such as `1 hour ago`; future dates return text such as `in 2 hours`.
+Formats a date relative to the current time.
 
 ```js
-agozilla(new Date(Date.now() - 60 * 60 * 1000));
-agozilla.fromNow("2024-01-01");
+agozilla("2025-01-14T12:00:00Z");
+```
+
+### `agozilla.fromNow(date, options?)`
+
+Formats past or future dates relative to the current time.
+
+```js
+agozilla.fromNow("2025-01-14T12:00:00Z");
+// Example: 1 day ago
 ```
 
 ### `agozilla.duration(startDate, endDate, options?)`
 
-Returns the elapsed duration between two dates.
+Calculates the duration between two dates using calendar-aware years and months.
 
 ```js
-agozilla.duration("2020-01-01", "2025-01-01");
-// 5 years 2 days
+agozilla.duration("2025-01-31", "2025-02-28");
+// 1 month
 ```
+
+The calculation handles different month lengths and leap years.
 
 ### `agozilla.until(date, options?)`
 
-Returns the remaining time until a future date. If the date has already passed, it returns `Date has already passed`.
+Returns the remaining time until a future date.
 
 ```js
-agozilla.until(new Date(Date.now() + 60 * 60 * 1000));
+agozilla.until("2025-12-31T23:59:59Z");
 ```
+
+If the date has already passed, it returns a localized message.
 
 ### `agozilla.smart(date, options?)`
 
-Returns `Today`, `Yesterday`, or `Tomorrow` for those calendar days. For other dates, it uses relative-time formatting.
+Returns a friendly description such as Today, Yesterday, or Tomorrow. Other dates use relative-time formatting.
 
 ```js
 agozilla.smart(new Date());
 // Today
 ```
 
-### `agozilla.calendar(date)`
+### `agozilla.calendar(date, options?)`
 
-Returns `Today`, `Yesterday`, `Tomorrow`, a nearby weekday description such as `Last Monday` or `Next Friday`, or a formatted calendar date for older dates.
+Returns Today, Yesterday, Tomorrow, a nearby weekday, or a formatted calendar date.
 
 ```js
 agozilla.calendar(new Date());
 // Today
-
-agozilla.calendar("2024-01-01");
-// January 1, 2024
 ```
 
 ## Options
 
-The relative-time APIs accept an optional options object:
+The APIs accept an optional options object.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `short` | `boolean` | Use compact units such as `1h` or `2d`. |
-| `maxUnits` | `number` | Maximum number of time units to include. Defaults to `2`. |
-| `locale` | `"en" \| "es" \| "fr"` | Select English, Spanish, or French wording. Defaults to `"en"`. |
+| `short` | `boolean` | Uses compact units such as `1h`, `2d`, and `1mo`. |
+| `maxUnits` | `number` | Maximum number of time units to display. Defaults to `2`. |
+| `locale` | `"en" \| "es" \| "fr"` | Selects the output language. Defaults to `"en"`. |
+| `now` | `string \| number \| Date` | Sets a custom reference date for relative and calendar APIs. |
+
+The `now` option is available for `agozilla`, `fromNow`, `until`, `smart`, and `calendar`. It is not used by `duration`.
+
+### Short Format
 
 ```js
-agozilla.fromNow("2024-01-01", {
-  short: true,
-  maxUnits: 1,
-  locale: "en"
-});
-
-agozilla.duration("2020-01-01", "2025-01-01", {
-  locale: "es"
+agozilla.fromNow("2025-01-14T12:00:00Z", {
+  short: true
 });
 ```
 
-Invalid date inputs return `Invalid date`.
+### Maximum Units
+
+```js
+agozilla.duration("2020-01-01", "2025-01-01", {
+  maxUnits: 1
+});
+```
+
+### Localization
+
+```js
+agozilla.fromNow("2025-01-14T12:00:00Z", {
+  locale: "es"
+});
+
+agozilla.fromNow("2025-01-14T12:00:00Z", {
+  locale: "fr"
+});
+```
+
+### Custom Reference Date
+
+Use `now` when you need predictable output, such as in tests or scheduled applications.
+
+```js
+const referenceDate = new Date("2025-01-15T12:00:00Z");
+
+agozilla.fromNow("2025-01-14T12:00:00Z", {
+  now: referenceDate
+});
+// 1 day ago
+```
 
 ## TypeScript
 
-Agozilla ships TypeScript declarations for its public APIs and options. Install it as usual:
+Agozilla includes TypeScript declarations for all its public APIs and options.
 
-```bash
-npm install agozilla
+```ts
+import agozilla = require("agozilla");
+
+const result: string = agozilla.fromNow(
+  new Date(),
+  { locale: "en" }
+);
 ```
 
 ## Contributing
 
-Bug reports, feature requests, and pull requests are welcome. For larger changes, please open an issue first so we can discuss the approach.
+Bug reports, feature requests, and pull requests are welcome.
+
+For larger changes, please open an issue first to discuss the proposed approach.
 
 ## License
 
