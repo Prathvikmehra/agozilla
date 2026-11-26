@@ -1,18 +1,23 @@
+
 export interface AgozillaOptions {
     short?: boolean;
     maxUnits?: number;
     locale?: "en" | "es" | "fr";
 }
 
+export interface AgozillaRelativeOptions extends AgozillaOptions {
+    now?: string | number | Date;
+}
+
 interface Agozilla {
     (
         dateString: string | Date,
-        options?: AgozillaOptions
+        options?: AgozillaRelativeOptions
     ): string;
 
     fromNow(
         dateString: string | Date,
-        options?: AgozillaOptions
+        options?: AgozillaRelativeOptions
     ): string;
 
     duration(
@@ -23,18 +28,18 @@ interface Agozilla {
 
     until(
         date: string | Date,
-        options?: AgozillaOptions
+        options?: AgozillaRelativeOptions
     ): string;
 
     smart(
         date: string | Date,
-        options?: AgozillaOptions
+        options?: AgozillaRelativeOptions
     ): string;
 
     calendar(
-        date: string | Date
+        date: string | Date,
+        options?: AgozillaRelativeOptions
     ): string;
-
 }
 
 declare const agozilla: Agozilla;

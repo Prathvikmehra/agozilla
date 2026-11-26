@@ -10,7 +10,9 @@
     }
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --project tsconfig.types.json",
+    "test:all": "npm test && npm run typecheck"
   },
   "types": "index.d.ts",
   "keywords": [
@@ -48,6 +50,7 @@
     "LICENSE"
   ],
   "devDependencies": {
-    "jest": "^30.4.2"
+    "jest": "^30.4.2",
+    "typescript": "^7.0.2"
   }
 }
